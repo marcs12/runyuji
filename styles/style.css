@@ -36,60 +36,9 @@ body {
 /* Elements
 --------------------------------------------- */
 
-/* Links
---------------------------------------------- */
-
-/*--------------------------------------------------------------
-# Components
---------------------------------------------------------------*/
-
-/* Header
---------------------------------------------- */
-
-/* Main
---------------------------------------------- */
-#gameContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.main-container {
-  height: 720px;
-  width: 1280px;
-  border: solid 5px black;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.infinite-scroll {
-  background: url("/assets/infinite-scroll-bg.png") repeat-x;
-  box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.3);
-  height: 720px;
-  width: 4800px;
-  animation: slide 10s linear infinite;
-}
-.fast {
-  background: url("/assets/infinite-scroll-bg.png") repeat-x;
-  height: 720px;
-  width: 4800px;
-  animation: slide 10s linear infinite;
-}
-
 .start-btn.primary.hide {
   opacity: 0;
-  transition: opacity 0.5s;
-}
-
-@keyframes slide {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-1600px, 0, 0);
-  }
+  transition: all 500ms;
 }
 
 .start-btn {
@@ -128,6 +77,64 @@ body {
   &:hover {
     background: #1fff06;
   }
+}
+
+/* Links
+--------------------------------------------- */
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+
+/* Header
+--------------------------------------------- */
+
+/* Main
+--------------------------------------------- */
+#gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-container {
+  height: 720px;
+  width: 1280px;
+  border: solid 5px black;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.infinite-scroll {
+  background: url("/assets/infinite-scroll-bg.png") repeat-x;
+  box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.3);
+  height: 720px;
+  width: 4800px;
+  animation: slide 20s linear infinite;
+  transition: all 500ms ease;
+}
+/* .infinite-scroll.fast {
+  animation: slide 10s linear infinite;
+} */
+
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1600px, 0, 0);
+  }
+}
+
+.infinite-foreground {
+  background: url("/assets/infinite-foreground.png") repeat-x;
+  height: 96px;
+  width: 6015px;
+  animation: slide 10s linear infinite;
+  position: absolute;
+  bottom: 0;
 }
 
 /* Footer
