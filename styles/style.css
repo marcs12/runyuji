@@ -27,26 +27,12 @@ body {
 
 /* Typography
 --------------------------------------------- */
-
-.tiny5-regular {
-  font-family: "Tiny5", sans-serif;
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
 }
 
-h1 {
-  color: white;
-  font-family: tiny5;
-  font-size: 2rem;
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
-}
-
-h2 {
-  color: black;
-  font-family: tiny5;
-  font-size: 1.5rem;
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
-}
 /* Elements
 --------------------------------------------- */
 
@@ -75,6 +61,7 @@ h2 {
   border: solid 5px black;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .infinite-scroll {
@@ -83,13 +70,62 @@ h2 {
   width: 4800px;
   animation: slide 10s linear infinite;
 }
+.fast {
+  background: url("/assets/infinite-scroll-bg.png") repeat-x;
+  height: 720px;
+  width: 4800px;
+  animation: slide 10s linear infinite;
+}
+
+.start-btn.primary.hide {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
 
 @keyframes slide {
   0% {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(-1600px, 0, 0); /* The image width */
+    transform: translate3d(-1600px, 0, 0);
+  }
+}
+
+.start-btn {
+  background: #7c7c7c;
+  border-bottom: 6px inset rgba(0, 0, 0, 0.5);
+  border-left: 6px inset rgba(0, 0, 0, 0.5);
+  border-right: 6px inset rgba(255, 255, 255, 0.5);
+  border-top: 6px inset rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 2.2rem;
+  margin: 1rem;
+  min-width: 200px;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  width: auto;
+  position: absolute;
+  z-index: 100;
+  top: 18rem;
+  left: 26rem;
+  font-family: "Press Start 2P", system-ui;
+  opacity: 100%;
+
+  &:focus,
+  &:hover {
+    background: #bcbcbc;
+  }
+}
+
+.start-btn.primary {
+  background: #50da00;
+
+  &:focus,
+  &:hover {
+    background: #1fff06;
   }
 }
 
