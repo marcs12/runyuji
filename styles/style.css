@@ -1,0 +1,99 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic (CALLED IN NORMALIZE.CSS)
+	- Normalize
+	- Box sizing
+	- Media width
+# Base
+	- Typography
+	- Elements
+	- Links
+# Components
+	- Header
+	- Main
+	- Footer
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+body {
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  background-image: url("/assets/bg-image.png");
+  background-size: cover;
+}
+
+/* Typography
+--------------------------------------------- */
+
+.tiny5-regular {
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  color: white;
+  font-family: tiny5;
+  font-size: 2rem;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+
+h2 {
+  color: black;
+  font-family: tiny5;
+  font-size: 1.5rem;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+/* Elements
+--------------------------------------------- */
+
+/* Links
+--------------------------------------------- */
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+
+/* Header
+--------------------------------------------- */
+
+/* Main
+--------------------------------------------- */
+#gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-container {
+  height: 720px;
+  width: 1280px;
+  border: solid 5px black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.infinite-scroll {
+  background-image: url("/assets/infinite-scroll-bg.png");
+  height: 720px;
+  width: 3840px;
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1920px, 0, 0); /* The image width */
+  }
+}
+
+/* Footer
+--------------------------------------------- */
+/* Footer
+--------------------------------------------- */
