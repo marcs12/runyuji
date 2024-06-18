@@ -56,13 +56,33 @@ function runAnim() {
 
 // Jump Animation
 
+// preload jump images
+for (let i = 1; i <= 6; i++) {
+  const img = new Image();
+  img.src = `assets/sprite-jump/jump-${i}.png`;
+}
+
 function jumpAnim() {
   let frame = 1;
   setInterval(() => {
     charRun.innerHTML = `<img src="assets/sprite-jump/jump-${frame}.png" alt="Character Jumping">`;
     frame++;
-    if (frame > 12) {
+    if (frame > 6) {
       frame = 1;
     }
-  }, 83.33); //set to 83ms for 12fps jump animation.
+  }, 125); //set to 83ms for 12fps jump animation.
 }
+
+// spacebar for jump
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    clearInterval(runAnim);
+    jumpAnim();
+    clearInterval(jumpAnim);
+    runAnim();
+  }
+});
+
+// another thing I can do is set the left position on the div #player to move the character and replace the whole div inside with the jump animation when keydown === space. create 2 divs for run and jump and toggle between them.
+
+// do this tomorrow, ask Gabbie for advice
