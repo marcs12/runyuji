@@ -18,6 +18,7 @@ function speedUp() {
 }
 
 const charRun = document.querySelector(".char-run");
+const lineMotion = document.querySelector(".motion-line");
 
 startBtn.addEventListener("click", () => {
   //   debugger;
@@ -33,6 +34,9 @@ startBtn.addEventListener("click", () => {
   }, 100);
   charRun.style.left = "7rem";
   runAnim();
+  setTimeout(() => {
+    lineMotion.style.transform = "translateX(-100%)";
+  }, 550);
 });
 
 // Run Animation

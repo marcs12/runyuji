@@ -135,6 +135,16 @@ body {
   animation: slide 4s linear infinite;
   position: absolute;
   bottom: 0;
+  z-index: 3;
+}
+
+.motion-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  transform: translateX(+100%);
+  transition: all 1s ease;
 }
 
 /* character */
