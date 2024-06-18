@@ -11,11 +11,13 @@ function speedUp() {
   const interval = setInterval(() => {
     initialSpeed -= 1;
     console.log(initialSpeed);
-    if (initialSpeed === 5) {
+    if (initialSpeed === 8) {
       clearInterval(interval);
     }
   }, 100);
 }
+
+const charRun = document.querySelector(".char-run");
 
 startBtn.addEventListener("click", () => {
   //   debugger;
@@ -29,6 +31,38 @@ startBtn.addEventListener("click", () => {
   setInterval(() => {
     infScrollBg.style = `animation: slide ${initialSpeed}s linear infinite`;
   }, 100);
+  charRun.style.left = "7rem";
+  runAnim();
 });
 
 // Run Animation
+
+// preload run images
+for (let i = 1; i <= 8; i++) {
+  const img = new Image();
+  img.src = `assets/sprite-run/run-${i}.png`;
+}
+
+function runAnim() {
+  let frame = 1;
+  setInterval(() => {
+    charRun.innerHTML = `<img src="assets/sprite-run/run-${frame}.png" alt="Character Running">`;
+    frame++;
+    if (frame > 8) {
+      frame = 1;
+    }
+  }, 83.33); //set to 83ms for 12fps run animation.
+}
+
+// Jump Animation
+
+function jumpAnim() {
+  let frame = 1;
+  setInterval(() => {
+    charRun.innerHTML = `<img src="assets/sprite-jump/jump-${frame}.png" alt="Character Jumping">`;
+    frame++;
+    if (frame > 12) {
+      frame = 1;
+    }
+  }, 83.33); //set to 83ms for 12fps jump animation.
+}

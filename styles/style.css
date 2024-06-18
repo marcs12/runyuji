@@ -109,11 +109,11 @@ body {
 
 .infinite-scroll {
   background: url("/assets/infinite-scroll-bg.png") repeat-x;
-  box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.473);
   height: 720px;
   width: 4800px;
   animation: slide 20s linear infinite;
-  transition: all 500ms ease;
+  transition: all 100ms ease;
 }
 /* .infinite-scroll.fast {
   animation: slide 10s linear infinite;
@@ -132,9 +132,17 @@ body {
   background: url("/assets/infinite-foreground.png") repeat-x;
   height: 96px;
   width: 6015px;
-  animation: slide 10s linear infinite;
+  animation: slide 4s linear infinite;
   position: absolute;
   bottom: 0;
+}
+
+/* character */
+.char-run {
+  position: absolute;
+  bottom: 5.5rem;
+  left: -100rem;
+  transition: all 2s ease;
 }
 
 /* Footer
