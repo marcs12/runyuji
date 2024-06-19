@@ -4,13 +4,12 @@
 const startBtn = document.querySelector(".start-btn");
 const infScrollBg = document.querySelector(".infinite-scroll");
 
-// Start Button Clicked
 let initialSpeed = 60;
 
 function speedUp() {
   const targetSpeed = 8;
   const decrement = 0.1;
-  const interval = 10; // Reduce the interval for smoother animation
+  const interval = 1; // Reduce the interval for smoother animation
 
   const speedUpInterval = setInterval(() => {
     initialSpeed -= decrement;
@@ -24,8 +23,8 @@ function speedUp() {
 const charRun = document.querySelector(".char-run");
 const lineMotion = document.querySelector(".motion-line");
 
+// Start Button
 startBtn.addEventListener("click", () => {
-  debugger;
   console.log("Start Button Clicked");
   startBtn.classList.add("hide");
   setTimeout(() => {
@@ -37,13 +36,13 @@ startBtn.addEventListener("click", () => {
     if (initialSpeed <= 8) {
       clearInterval(updateInterval);
     }
-  }, 10);
+  }, 1);
 
   charRun.style.left = "7rem";
   runYuji = setInterval(runAnim, 83.33);
   setTimeout(() => {
     lineMotion.style.transform = "translateX(-100%)";
-  }, 775);
+  }, 1700);
 });
 
 // Preload run images
