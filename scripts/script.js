@@ -5,49 +5,64 @@ const startBtn = document.querySelector(".start-btn");
 const infScrollBg = document.querySelector(".infinite-scroll");
 
 // Start Button Clicked
-let initialSpeed = 20;
+let initialSpeed = 60;
 
 function speedUp() {
-  const interval = setInterval(() => {
-    initialSpeed -= 1;
-    // console.log(initialSpeed);
-    if (initialSpeed === 8) {
-      clearInterval(interval);
+  const targetSpeed = 8;
+  const decrement = 0.1;
+  const interval = 10; // Reduce the interval for smoother animation
+
+  const speedUpInterval = setInterval(() => {
+    initialSpeed -= decrement;
+    if (initialSpeed <= targetSpeed) {
+      initialSpeed = targetSpeed;
+      clearInterval(speedUpInterval);
     }
-  }, 100);
+  }, interval);
 }
 
 const charRun = document.querySelector(".char-run");
 const lineMotion = document.querySelector(".motion-line");
 
 startBtn.addEventListener("click", () => {
-  //   debugger;
-  //   infScrollBg.classList.add("fast");
+  debugger;
   console.log("Start Button Clicked");
   startBtn.classList.add("hide");
   setTimeout(() => {
     startBtn.style.display = "none";
   }, 500);
   speedUp();
-  setInterval(() => {
+  const updateInterval = setInterval(() => {
     infScrollBg.style = `animation: slide ${initialSpeed}s linear infinite`;
-  }, 100);
+    if (initialSpeed <= 8) {
+      clearInterval(updateInterval);
+    }
+  }, 10);
+
   charRun.style.left = "7rem";
-  runAnim();
+  runYuji = setInterval(runAnim, 83.33);
   setTimeout(() => {
     lineMotion.style.transform = "translateX(-100%)";
   }, 775);
 });
 
-// Run Animation
-
-// preload run images
+// Preload run images
 for (let i = 1; i <= 8; i++) {
   const img = new Image();
   img.src = `assets/sprite-run/run-${i}.png`;
 }
 
+// Preload jump images
+for (let i = 1; i <= 6; i++) {
+  const img = new Image();
+  img.src = `assets/sprite-jump/jump-${i}.png`;
+}
+
 let frame = 1;
+let yframe = 1;
+let isJumping = false;
+let runYuji;
+let jumpYuji;
 
 function runAnim() {
   charRun.innerHTML = `<img src="assets/sprite-run/run-${frame}.png" alt="Character Running">`;
@@ -55,45 +70,29 @@ function runAnim() {
   if (frame > 8) {
     frame = 1;
   }
-  // if (e.code === "Space") {
-  //   clearInterval(runAnim);
-  // }
 }
-
-const runYuji = setInterval(runAnim, 83.33);
-// Jump Animation
-
-// preload jump images
-for (let i = 1; i <= 6; i++) {
-  const img = new Image();
-  img.src = `assets/sprite-jump/jump-${i}.png`;
-}
-
-let yframe = 1;
 
 function jumpAnim() {
-  clearInterval(runYuji);
   charRun.innerHTML = `<img src="assets/sprite-jump/jump-${yframe}.png" alt="Character Jumping">`;
   yframe++;
   if (yframe > 6) {
+    clearInterval(jumpYuji);
     yframe = 1;
+    isJumping = false;
+    runYuji = setInterval(runAnim, 83.33);
   }
 }
 
-function jumpYuji() {
-  setInterval(jumpAnim, 80);
+function startJump() {
+  if (isJumping) return;
+  isJumping = true;
+  clearInterval(runYuji);
+  yframe = 1;
+  jumpYuji = setInterval(jumpAnim, 100);
 }
 
 window.addEventListener("keydown", (e) => {
-  // debugger;
   if (e.code === "Space") {
-    clearInterval(runYuji);
-    jumpYuji();
-    setTimeout(clearInterval(jumpYuji), 83);
-    setTimeout(runYuji, 85);
+    startJump();
   }
 });
-
-// maybe set the left position on the div #player to move the character and replace the whole div inside with the jump animation when keydown === space. create 2 divs for run and jump and toggle between them.
-
-// do this tomorrow, ask Gabbie for advice
