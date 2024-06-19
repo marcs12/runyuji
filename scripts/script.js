@@ -87,7 +87,11 @@ function startJump() {
   isJumping = true;
   clearInterval(runYuji);
   yframe = 1;
-  jumpYuji = setInterval(jumpAnim, 100);
+  jumpYuji = setInterval(jumpAnim, 80);
+  player.style.transform = "translateY(-20rem)";
+  setTimeout(() => {
+    player.style.transform = "translateY(-1.05rem)";
+  }, 100);
 }
 
 window.addEventListener("keydown", (e) => {
@@ -95,3 +99,7 @@ window.addEventListener("keydown", (e) => {
     startJump();
   }
 });
+
+// player movement within container
+
+const player = document.getElementById("player");
