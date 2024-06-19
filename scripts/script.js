@@ -10,7 +10,7 @@ let initialSpeed = 20;
 function speedUp() {
   const interval = setInterval(() => {
     initialSpeed -= 1;
-    console.log(initialSpeed);
+    // console.log(initialSpeed);
     if (initialSpeed === 8) {
       clearInterval(interval);
     }
@@ -25,7 +25,7 @@ startBtn.addEventListener("click", () => {
   //   infScrollBg.classList.add("fast");
   console.log("Start Button Clicked");
   startBtn.classList.add("hide");
-  setInterval(() => {
+  setTimeout(() => {
     startBtn.style.display = "none";
   }, 500);
   speedUp();
@@ -36,7 +36,7 @@ startBtn.addEventListener("click", () => {
   runAnim();
   setTimeout(() => {
     lineMotion.style.transform = "translateX(-100%)";
-  }, 550);
+  }, 775);
 });
 
 // Run Animation
@@ -47,20 +47,20 @@ for (let i = 1; i <= 8; i++) {
   img.src = `assets/sprite-run/run-${i}.png`;
 }
 
+let frame = 1;
+
 function runAnim() {
-  let frame = 1;
-  setInterval(() => {
-    charRun.innerHTML = `<img src="assets/sprite-run/run-${frame}.png" alt="Character Running">`;
-    frame++;
-    if (frame > 8) {
-      frame = 1;
-    }
-    if (e.code === "Space") {
-      clearInterval(runAnim);
-    }
-  }, 83.33); //set to 83ms for 12fps run animation.
+  charRun.innerHTML = `<img src="assets/sprite-run/run-${frame}.png" alt="Character Running">`;
+  frame++;
+  if (frame > 8) {
+    frame = 1;
+  }
+  // if (e.code === "Space") {
+  //   clearInterval(runAnim);
+  // }
 }
 
+const runYuji = setInterval(runAnim, 83.33);
 // Jump Animation
 
 // preload jump images
@@ -69,24 +69,28 @@ for (let i = 1; i <= 6; i++) {
   img.src = `assets/sprite-jump/jump-${i}.png`;
 }
 
+let yframe = 1;
+
 function jumpAnim() {
-  clearInterval(runAnim);
-  let frame = 1;
-  setInterval(() => {
-    charRun.innerHTML = `<img src="assets/sprite-jump/jump-${frame}.png" alt="Character Jumping">`;
-    frame++;
-    if (frame > 6) {
-      frame = 1;
-    }
-  }, 125); //set to 83ms for 12fps jump animation.
+  clearInterval(runYuji);
+  charRun.innerHTML = `<img src="assets/sprite-jump/jump-${yframe}.png" alt="Character Jumping">`;
+  yframe++;
+  if (yframe > 6) {
+    yframe = 1;
+  }
 }
 
-document.addEventListener("keydown", (e) => {
+function jumpYuji() {
+  setInterval(jumpAnim, 80);
+}
+
+window.addEventListener("keydown", (e) => {
+  // debugger;
   if (e.code === "Space") {
-    clearInterval(runAnim);
-    console.log("Space Key Pressed");
-    jumpAnim();
-    setTimeout(runAnim(), 125);
+    clearInterval(runYuji);
+    jumpYuji();
+    setTimeout(clearInterval(jumpYuji), 83);
+    setTimeout(runYuji, 85);
   }
 });
 
