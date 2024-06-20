@@ -88,7 +88,7 @@ function startJump() {
   clearInterval(runYuji);
   yframe = 1;
   jumpYuji = setInterval(jumpAnim, 80);
-  player.style.transform = "translateY(-20rem)";
+  player.style.transform = "translateY(-25rem)";
   setTimeout(() => {
     player.style.transform = "translateY(-1.05rem)";
   }, 100);
