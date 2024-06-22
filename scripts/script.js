@@ -87,11 +87,11 @@ function startJump() {
   isJumping = true;
   clearInterval(runYuji);
   yframe = 1;
-  jumpYuji = setInterval(jumpAnim, 80);
+  jumpYuji = setInterval(jumpAnim, 105);
   player.style.transform = "translateY(-25rem)";
   setTimeout(() => {
     player.style.transform = "translateY(-1.05rem)";
-  }, 100);
+  }, 300);
 }
 
 window.addEventListener("keydown", (e) => {

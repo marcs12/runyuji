@@ -161,6 +161,49 @@ body {
   transition: all 150ms ease;
 }
 
+/* buildings */
+
+#obstacle1 {
+  display: block;
+  position: absolute;
+  bottom: 8rem;
+  left: 100%;
+  z-index: 1;
+  transition: all 1s ease;
+  height: 10rem;
+  width: 10rem;
+  animation: obsSlider1 2s linear infinite;
+}
+
+@keyframes obsSlider1 {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+#obstacle2 {
+  display: block;
+  position: absolute;
+  bottom: 8rem;
+  left: 100%;
+  z-index: 1;
+  transition: all 1s ease;
+  height: 10rem;
+  width: 10rem;
+  animation: obsSlider2 3s linear infinite;
+}
+
+@keyframes obsSlider2 {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
 /* Footer
 --------------------------------------------- */
 /* Footer
