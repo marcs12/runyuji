@@ -43,6 +43,15 @@ startBtn.addEventListener("click", () => {
   setTimeout(() => {
     lineMotion.style.transform = "translateX(-100%)";
   }, 1700);
+
+  // Obstacle Animation, obstacles should be display none initially and then display block after 2s
+  setTimeout(() => {
+    document.getElementById("obstacle1").style.display = "block";
+    document.getElementById("obstacle2").style.display = "block";
+    document.getElementById("obstacle3").style.display = "block";
+    // Start checking collisions after obstacles are displayed
+    setInterval(checkCollisions, 100); // Adjust interval as needed
+  }, 2000);
 });
 
 // Preload run images
@@ -101,5 +110,51 @@ window.addEventListener("keydown", (e) => {
 });
 
 // player movement within container
+const playerDiv = document.querySelector(".char-run");
 
-const player = document.getElementById("player");
+// check if const player collides with obstacle1 or obstacle2 or obstacle3, if it does then console.log("Game Over")
+function checkCollisions() {
+  const playerRect = playerDiv.getBoundingClientRect();
+  const obstacle1Rect = document
+    .getElementById("obstacle1")
+    .getBoundingClientRect();
+  const obstacle2Rect = document
+    .getElementById("obstacle2")
+    .getBoundingClientRect();
+  const obstacle3Rect = document
+    .getElementById("obstacle3")
+    .getBoundingClientRect();
+
+  if (
+    playerRect.top < obstacle1Rect.bottom &&
+    playerRect.bottom > obstacle1Rect.top &&
+    playerRect.right > obstacle1Rect.left &&
+    playerRect.left < obstacle1Rect.right
+  ) {
+    console.log("Game Over");
+    clearInterval(runYuji);
+    clearInterval(jumpYuji);
+  }
+
+  if (
+    playerRect.top < obstacle2Rect.bottom &&
+    playerRect.bottom > obstacle2Rect.top &&
+    playerRect.right > obstacle2Rect.left &&
+    playerRect.left < obstacle2Rect.right
+  ) {
+    console.log("Game Over");
+    clearInterval(runYuji);
+    clearInterval(jumpYuji);
+  }
+
+  if (
+    playerRect.top < obstacle3Rect.bottom &&
+    playerRect.bottom > obstacle3Rect.top &&
+    playerRect.right > obstacle3Rect.left &&
+    playerRect.left < obstacle3Rect.right
+  ) {
+    console.log("Game Over");
+    clearInterval(runYuji);
+    clearInterval(jumpYuji);
+  }
+}

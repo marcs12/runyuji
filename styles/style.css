@@ -162,16 +162,15 @@ body {
 }
 
 /* buildings */
-
 #obstacle1 {
-  display: block;
+  display: none;
   position: absolute;
-  bottom: 8rem;
+  bottom: 6rem;
   left: 100%;
   z-index: 1;
   transition: all 1s ease;
-  height: 10rem;
-  width: 10rem;
+  height: 200px;
+  width: 100px;
   animation: obsSlider1 2s linear infinite;
 }
 
@@ -185,23 +184,43 @@ body {
 }
 
 #obstacle2 {
-  display: block;
+  display: none;
   position: absolute;
-  bottom: 8rem;
-  left: 100%;
+  bottom: 6rem;
+  left: calc(100% + 500px);
   z-index: 1;
   transition: all 1s ease;
-  height: 10rem;
-  width: 10rem;
-  animation: obsSlider2 3s linear infinite;
+  height: 250px;
+  width: 100px;
+  animation: obsSlider2 2s linear infinite;
 }
 
 @keyframes obsSlider2 {
   0% {
-    left: 100%;
+    left: calc(100% + 60rem);
   }
   100% {
-    left: -100%;
+    left: calc(-100% + 60rem);
+  }
+}
+#obstacle3 {
+  display: none;
+  position: absolute;
+  bottom: 6rem;
+  left: calc(100% + 1000px);
+  z-index: 1;
+  transition: all 1s ease;
+  height: 200px;
+  width: 150px;
+  animation: obsSlider3 3s linear infinite;
+}
+
+@keyframes obsSlider3 {
+  0% {
+    left: calc(100%);
+  }
+  100% {
+    left: calc(-100%);
   }
 }
 /* Footer
