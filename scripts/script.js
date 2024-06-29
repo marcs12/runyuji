@@ -180,3 +180,21 @@ resetBtn.addEventListener("click", () => {
   console.log("Reset Button Clicked");
   location.reload();
 });
+
+// Obstacle3 should only appear when obstacle2 and obstacle1 are outside of the div container
+const obstacle3 = document.getElementById("obstacle3");
+const obstacle1 = document.getElementById("obstacle1");
+const obstacle2 = document.getElementById("obstacle2");
+
+function checkObstacle3() {
+  const obstacle1Rect = obstacle1.getBoundingClientRect();
+  const obstacle2Rect = obstacle2.getBoundingClientRect();
+
+  if (
+    obstacle1Rect.right < 0 &&
+    obstacle2Rect.right < 0 &&
+    obstacle3.style.display === "none"
+  ) {
+    obstacle3.style.display = "block";
+  }
+}

@@ -260,7 +260,7 @@ body {
   }
 }
 
-/* #obstacle3 {
+#obstacle3 {
   display: none;
   position: absolute;
   bottom: 6rem;
@@ -279,7 +279,7 @@ body {
   100% {
     left: calc(-100%);
   }
-} */
+}
 
 /* Footer
 --------------------------------------------- */
