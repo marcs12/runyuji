@@ -44,13 +44,11 @@ startBtn.addEventListener("click", () => {
     lineMotion.style.transform = "translateX(-100%)";
   }, 1700);
 
-  // Obstacle Animation, obstacles should be display none initially and then display block after 2s
   setTimeout(() => {
     document.getElementById("obstacle1").style.display = "block";
     document.getElementById("obstacle2").style.display = "block";
     document.getElementById("obstacle3").style.display = "block";
-    // Start checking collisions after obstacles are displayed
-    setInterval(checkCollisions, 100); // Adjust interval as needed
+    setInterval(checkCollisions, 100);
   }, 2000);
 });
 
@@ -96,11 +94,11 @@ function startJump() {
   isJumping = true;
   clearInterval(runYuji);
   yframe = 1;
-  jumpYuji = setInterval(jumpAnim, 105);
+  jumpYuji = setInterval(jumpAnim, 90);
   player.style.transform = "translateY(-25rem)";
   setTimeout(() => {
     player.style.transform = "translateY(-1.05rem)";
-  }, 300);
+  }, 725);
 }
 
 window.addEventListener("keydown", (e) => {
@@ -109,10 +107,24 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+// Game Over
+const gameOver = document.querySelector(".game-over");
+const restartBtn = document.querySelector(".restart-btn");
+
+function gameOverScreen() {
+  gameOver.style.display = "flex";
+  clearInterval(runYuji);
+  clearInterval(jumpYuji);
+}
+
+restartBtn.addEventListener("click", () => {
+  console.log("Restart Button Clicked");
+  location.reload();
+});
+
 // player movement within container
 const playerDiv = document.querySelector(".char-run");
 
-// check if const player collides with obstacle1 or obstacle2 or obstacle3, if it does then console.log("Game Over")
 function checkCollisions() {
   const playerRect = playerDiv.getBoundingClientRect();
   const obstacle1Rect = document
@@ -134,6 +146,7 @@ function checkCollisions() {
     console.log("Game Over");
     clearInterval(runYuji);
     clearInterval(jumpYuji);
+    gameOverScreen();
   }
 
   if (
@@ -145,6 +158,7 @@ function checkCollisions() {
     console.log("Game Over");
     clearInterval(runYuji);
     clearInterval(jumpYuji);
+    gameOverScreen();
   }
 
   if (
@@ -156,5 +170,13 @@ function checkCollisions() {
     console.log("Game Over");
     clearInterval(runYuji);
     clearInterval(jumpYuji);
+    gameOverScreen();
   }
 }
+
+// Reset Button
+const resetBtn = document.querySelector(".reset-btn");
+resetBtn.addEventListener("click", () => {
+  console.log("Reset Button Clicked");
+  location.reload();
+});

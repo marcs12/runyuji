@@ -98,6 +98,27 @@ body {
   height: 100vh;
 }
 
+.game-over {
+  position: absolute;
+  background-color: yellow;
+  color: black;
+  font-size: 2rem;
+  padding: 1rem;
+  z-index: 100;
+  width: 1280px;
+  height: 720px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.625rem;
+}
+
+.game-over p {
+  font-size: 3rem;
+  margin: 0;
+}
+
 .main-container {
   height: 720px;
   width: 1280px;
@@ -171,15 +192,15 @@ body {
   transition: all 1s ease;
   height: 200px;
   width: 100px;
-  animation: obsSlider1 2s linear infinite;
+  animation: obsSlider1 6s linear infinite;
 }
 
 @keyframes obsSlider1 {
   0% {
-    left: 100%;
+    left: 150rem;
   }
   100% {
-    left: -100%;
+    left: -150rem;
   }
 }
 
@@ -192,7 +213,7 @@ body {
   transition: all 1s ease;
   height: 250px;
   width: 100px;
-  animation: obsSlider2 2s linear infinite;
+  animation: obsSlider2 6s linear infinite;
 }
 
 @keyframes obsSlider2 {
@@ -203,7 +224,8 @@ body {
     left: calc(-100% + 60rem);
   }
 }
-#obstacle3 {
+
+/* #obstacle3 {
   display: none;
   position: absolute;
   bottom: 6rem;
@@ -212,7 +234,7 @@ body {
   transition: all 1s ease;
   height: 200px;
   width: 150px;
-  animation: obsSlider3 3s linear infinite;
+  animation: obsSlider3 6s linear infinite;
 }
 
 @keyframes obsSlider3 {
@@ -222,7 +244,8 @@ body {
   100% {
     left: calc(-100%);
   }
-}
+} */
+
 /* Footer
 --------------------------------------------- */
 /* Footer
