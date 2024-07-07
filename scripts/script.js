@@ -22,6 +22,8 @@ function speedUp() {
 
 const charRun = document.querySelector(".char-run");
 const lineMotion = document.querySelector(".motion-line");
+const points1 = document.querySelector(".finger-points");
+const points2 = document.querySelector(".finger-points-2");
 
 // Start Button
 startBtn.addEventListener("click", () => {
@@ -37,6 +39,23 @@ startBtn.addEventListener("click", () => {
       clearInterval(updateInterval);
     }
   }, 1);
+
+  function randomAppear() {
+    setTimeout(() => {
+      let randomTime = Math.floor(Math.random() * 10000);
+      setTimeout(() => {
+        points1.style.display = "block";
+      }, randomTime);
+    }, 2000);
+    setTimeout(() => {
+      let randomTime = Math.floor(Math.random() * 10000);
+      setTimeout(() => {
+        points2.style.display = "block";
+      }, randomTime);
+    }, 4000);
+  }
+
+  randomAppear();
 
   charRun.style.left = "7rem";
   runYuji = setInterval(runAnim, 83.33);
@@ -115,6 +134,10 @@ function gameOverScreen() {
   gameOver.style.display = "flex";
   clearInterval(runYuji);
   clearInterval(jumpYuji);
+  document.getElementById("obstacle1").style.display = "none";
+  document.getElementById("obstacle2").style.display = "none";
+  document.getElementById("obstacle3").style.display = "none";
+  document.getElementById("final-score").innerHTML = score;
 }
 
 restartBtn.addEventListener("click", () => {
@@ -124,6 +147,9 @@ restartBtn.addEventListener("click", () => {
 
 // player movement within container
 const playerDiv = document.querySelector(".char-run");
+
+let score = 0;
+const scoreDisplay = document.getElementById("score");
 
 function checkCollisions() {
   const playerRect = playerDiv.getBoundingClientRect();
@@ -174,27 +200,48 @@ function checkCollisions() {
   }
 }
 
+function updateScore() {
+  const playerRect = playerDiv.getBoundingClientRect();
+  const points1Rect = points1.getBoundingClientRect();
+  const points2Rect = points2.getBoundingClientRect();
+
+  if (
+    playerRect.top < points1Rect.bottom &&
+    playerRect.bottom > points1Rect.top &&
+    playerRect.right > points1Rect.left &&
+    playerRect.left < points1Rect.right
+  ) {
+    score++;
+    points1.style.display = "none";
+    console.log("scored a point");
+    scoreDisplay.innerHTML = `Score: ${score}`;
+    setTimeout(() => {
+      points1.style.display = "block";
+    }, 1500);
+  }
+
+  if (
+    playerRect.top < points2Rect.bottom &&
+    playerRect.bottom > points2Rect.top &&
+    playerRect.right > points2Rect.left &&
+    playerRect.left < points2Rect.right
+  ) {
+    score++;
+    points2.style.display = "none";
+    console.log("scored a point");
+    scoreDisplay.innerHTML = `Score: ${score}`;
+    setTimeout(() => {
+      points2.style.display = "block";
+    }, 1500);
+  }
+}
+
+//update the score counter everytime a point is scored
+setInterval(updateScore, 100);
+
 // Reset Button
 const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click", () => {
   console.log("Reset Button Clicked");
   location.reload();
 });
-
-// Obstacle3 should only appear when obstacle2 and obstacle1 are outside of the div container
-const obstacle3 = document.getElementById("obstacle3");
-const obstacle1 = document.getElementById("obstacle1");
-const obstacle2 = document.getElementById("obstacle2");
-
-function checkObstacle3() {
-  const obstacle1Rect = obstacle1.getBoundingClientRect();
-  const obstacle2Rect = obstacle2.getBoundingClientRect();
-
-  if (
-    obstacle1Rect.right < 0 &&
-    obstacle2Rect.right < 0 &&
-    obstacle3.style.display === "none"
-  ) {
-    obstacle3.style.display = "block";
-  }
-}
