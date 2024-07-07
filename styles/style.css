@@ -22,6 +22,7 @@ body {
   font-family: "Times New Roman", Times, serif;
   text-align: center;
   background-image: url("/assets/bg-image.png");
+  background-size: 1920px 1080px;
   background-size: cover;
 }
 
@@ -101,6 +102,7 @@ body {
 .game-over {
   position: absolute;
   background: url("/assets/end-screen.gif") no-repeat center center;
+  background-size: 526px 548px;
   background-color: white;
   color: black;
   font-size: 2rem;
@@ -165,6 +167,7 @@ body {
 
 .infinite-scroll {
   background: url("/assets/infinite-scroll-bg.png") repeat-x;
+  background-size: 1600px 700px;
   box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.473);
   height: 720px;
   width: 4800px;
@@ -186,6 +189,7 @@ body {
 
 .infinite-foreground {
   background: url("/assets/infinite-foreground.png") repeat-x;
+  background-size: 1600px 96px;
   height: 96px;
   width: 6015px;
   animation: slide 4s linear infinite;
@@ -249,6 +253,7 @@ body {
   height: 250px;
   width: 100px;
   animation: obsSlider2 6s linear infinite;
+  animation-delay: 2s; /* Added delay to space out evenly */
 }
 
 @keyframes obsSlider2 {
@@ -260,7 +265,7 @@ body {
   }
 }
 
-/* #obstacle3 {
+#obstacle3 {
   display: none;
   position: absolute;
   bottom: 6rem;
@@ -270,6 +275,7 @@ body {
   height: 200px;
   width: 150px;
   animation: obsSlider3 6s linear infinite;
+  animation-delay: 8s; /* Added delay to space out evenly */
 }
 
 @keyframes obsSlider3 {
@@ -279,7 +285,7 @@ body {
   100% {
     left: calc(-100%);
   }
-} */
+}
 
 /* Footer
 --------------------------------------------- */
