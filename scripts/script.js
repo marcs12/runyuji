@@ -5,11 +5,11 @@ const startBtn = document.querySelector(".start-btn");
 const infScrollBg = document.querySelector(".infinite-scroll");
 
 //Audio Files
-const jumpSound = new Audio("/assets/jump-sfx.mp3");
-const bgSound = new Audio("/assets/theme-music.mp3");
-const gameOverSound = new Audio("/assets/end-screen-sfx.mp3");
-const startSound = new Audio("/assets/start-sfx.mp3");
-const pointSound = new Audio("/assets/point-sound.mp3");
+const jumpSound = new Audio("./assets/jump-sfx.mp3");
+const bgSound = new Audio("./assets/theme-music.mp3");
+const gameOverSound = new Audio("./assets/end-screen-sfx.mp3");
+const startSound = new Audio("./assets/start-sfx.mp3");
+const pointSound = new Audio("./assets/point-sound.mp3");
 
 let initialSpeed = 60;
 
