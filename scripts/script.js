@@ -4,6 +4,13 @@
 const startBtn = document.querySelector(".start-btn");
 const infScrollBg = document.querySelector(".infinite-scroll");
 
+//Audio Files
+const jumpSound = new Audio("/assets/jump-sfx.mp3");
+const bgSound = new Audio("/assets/theme-music.mp3");
+const gameOverSound = new Audio("/assets/end-screen-sfx.mp3");
+const startSound = new Audio("/assets/start-sfx.mp3");
+const pointSound = new Audio("/assets/point-sound.mp3");
+
 let initialSpeed = 60;
 
 function speedUp() {
@@ -39,6 +46,9 @@ startBtn.addEventListener("click", () => {
       clearInterval(updateInterval);
     }
   }, 1);
+
+  bgSound.play();
+  startSound.play();
 
   function randomAppear() {
     setTimeout(() => {
@@ -123,6 +133,7 @@ function startJump() {
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
     startJump();
+    jumpSound.play();
   }
 });
 
@@ -138,6 +149,8 @@ function gameOverScreen() {
   document.getElementById("obstacle2").style.display = "none";
   document.getElementById("obstacle3").style.display = "none";
   document.getElementById("final-score").innerHTML = score;
+  bgSound.pause();
+  gameOverSound.play();
 }
 
 restartBtn.addEventListener("click", () => {
@@ -213,6 +226,7 @@ function updateScore() {
   ) {
     score++;
     points1.style.display = "none";
+    pointSound.play();
     console.log("scored a point");
     scoreDisplay.innerHTML = `Score: ${score}`;
     setTimeout(() => {
@@ -228,6 +242,7 @@ function updateScore() {
   ) {
     score++;
     points2.style.display = "none";
+    pointSound.play();
     console.log("scored a point");
     scoreDisplay.innerHTML = `Score: ${score}`;
     setTimeout(() => {

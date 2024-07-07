@@ -90,6 +90,30 @@ body {
 /* Header
 --------------------------------------------- */
 
+.main-title {
+  font-size: 3rem;
+  color: white;
+  font-family: "press start 2p", system-ui;
+  margin: 0 auto;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.888);
+  border-radius: 0 0 0.625rem 0;
+  position: absolute;
+}
+
+.inst {
+  font-size: 2rem;
+  color: white;
+  font-family: "press start 2p", system-ui;
+  margin: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.886);
+  border-radius: 0 0 0.625rem 0;
+  position: absolute;
+  top: 6rem;
+  left: 0;
+}
+
 /* Main
 --------------------------------------------- */
 #gameContainer {
@@ -265,7 +289,7 @@ body {
   height: 250px;
   width: 100px;
   animation: obsSlider2 6s linear infinite;
-  animation-delay: 2s; /* Added delay to space out evenly */
+  animation-delay: 2s;
 }
 
 @keyframes obsSlider2 {
@@ -287,7 +311,7 @@ body {
   height: 200px;
   width: 150px;
   animation: obsSlider3 6s linear infinite;
-  animation-delay: 8s; /* Added delay to space out evenly */
+  animation-delay: 9s;
 }
 
 @keyframes obsSlider3 {
